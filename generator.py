@@ -6,7 +6,7 @@ def find_mode(narration):
         return "UPI"
     elif "ATM" in narration:
         return "ATM"
-    elif "POS" in narration or "card" in narration:
+    elif "card" in narration:
         return "CARD"
     elif "TRANSFER" in narration:
         return "FT"
