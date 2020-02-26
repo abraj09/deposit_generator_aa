@@ -9,4 +9,4 @@ Steps to use.
 3. run - from generator import deposit_generator
 4. deposit_generator(bank_statement_path) - path of the CSV of bank statement
 
-PS. This is currently only supported for SBI bank statement only
+PS. This is currently supported for SBI bank statement only
