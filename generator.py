@@ -1,5 +1,6 @@
 import pandas as pd
 import numpy as np
+import json
 
 def find_mode(narration):
     if "UPI" in narration:
@@ -74,7 +75,7 @@ def deposit_generator(bank_statement_path):
                 "_status": "ACTIVE" #No reference
             },
             "Transactions": {
-                "Transaction": txnDetails.to_dict(orient='records'),
+                "Transaction": txnDetails.fillna("").to_dict(orient='records'),
             "_startDate": df[df[0].str.contains("Start Date")][1].values[0],
             "_endDate": df[df[0].str.contains("End Date")][1].values[0]
             },
@@ -88,4 +89,4 @@ def deposit_generator(bank_statement_path):
         }
     }
     
-    return deposit
+    return json.dumps(deposit)
