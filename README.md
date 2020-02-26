@@ -23,7 +23,7 @@ wget https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh
 sh Miniconda3-latest-Linux-x86_64.sh
 ```
 
-#### After conda installation is complete -
+#### After conda installation is complete, restart terminal-
 ```
 conda create -n temp_env_gen python=3.7
 conda activate temp_env_gen
