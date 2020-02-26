@@ -1,5 +1,6 @@
 # deposit_generator_aa
-Generated AA compliant JSON by taking CSV of the bank statement from SBI
+Generated AA compliant deposit - JSON by taking CSV of the bank statement from SBI
+https://specifications.rebit.org.in/api_schema/account_aggregator/documentation/deposit.html
 
 Download the XLS format of bank statement from SBI Internet Banking, convert XLS to CSV
 
