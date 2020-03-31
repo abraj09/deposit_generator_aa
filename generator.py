@@ -1,6 +1,7 @@
 import pandas as pd
 import numpy as np
 import json
+import datetime
 
 def find_mode(narration):
     if "UPI" in narration:
@@ -26,6 +27,9 @@ def deposit_generator(bank_statement_path):
                      "Description": "_narration", "Ref No./Cheque No.": "_reference", "Balance": "_currentBalance"})
     txnDetails.columns = txnDetails.columns.str.replace(' ', '')
     txnDetails = txnDetails.replace(r'^\s*$', np.nan, regex=True)
+    txnDetails['_transactionTimestamp'] = txnDetails['_transactionTimestamp'].apply(lambda x: datetime.datetime.strptime(x, '%d %b %Y').strftime('%Y-%m-%d'))
+    txnDetails['_valueDate'] = txnDetails['_valueDate'].apply(lambda x: datetime.datetime.strptime(x, '%d %b %Y').strftime('%Y-%m-%d'))
+
     txnDetails['_type'] = txnDetails.apply(lambda x: 'DEBIT' if np.isnan(float(str(x['Credit']).replace(",",""))) else 'CREDIT', axis=1)
 
     txnDetails['_amount'] = txnDetails.apply(lambda x: x['Credit'] if np.isnan(float(str(x['Debit']).replace(",",""))) else x['Debit'], axis=1)
@@ -63,7 +67,7 @@ def deposit_generator(bank_statement_path):
                 "_currentBalance": "0", #No reference
                 "_currency": "INR", #No reference
                 "_exchgeRate": "", #No reference
-                "_balanceDateTime": df[df[0].str.contains("Date")][1].values[0],
+                "_balanceDateTime": datetime.datetime.strptime(df[df[0].str.contains("Date")][1].values[0], '%d %b %Y').strftime('%Y-%m-%d'),
                 "_type": df[df[0].str.contains("Description")][1].values[0],
                 "_branch": df[df[0].str.contains("Branch")][1].values[0],
                 "_facility": "CC", #No reference
