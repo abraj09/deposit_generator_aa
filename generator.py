@@ -80,8 +80,8 @@ def deposit_generator(bank_statement_path):
             },
             "Transactions": {
                 "Transaction": txnDetails.fillna("").to_dict(orient='records'),
-            "_startDate": df[df[0].str.contains("Start Date")][1].values[0],
-            "_endDate": df[df[0].str.contains("End Date")][1].values[0]
+            "_startDate": datetime.datetime.strptime(df[df[0].str.contains("Start Date")][1].values[0], '%d %b %Y').strftime('%Y-%m-%d'),
+            "_endDate": datetime.datetime.strptime(df[df[0].str.contains("End Date")][1].values[0], '%d %b %Y').strftime('%Y-%m-%d'),
             },
             "_xmlns": "http://api.rebit.org.in/FISchema/deposit",
             "_xmlns:xsi": "http://www.w3.org/2001/XMLSchema-instance",
