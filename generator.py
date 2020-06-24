@@ -17,7 +17,7 @@ def find_mode(narration):
 
 
 def deposit_generator(bank_statement_path):
-    df = pd.read_csv(bank_statement_path, sep="\t",names=list(range(7)))[:-1]
+    df = pd.read_csv(bank_statement_path,names=list(range(8))).dropna(thresh=2)[:-1]
     df.insert(0, 'row_num', range(0,len(df)))
     transactionRow = int(df.loc[df[0] == "Txn Date"]['row_num'].values[0])
     txnCols = df[df['row_num'] == transactionRow].drop(['row_num'], axis = 1) 
