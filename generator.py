@@ -93,4 +93,8 @@ def deposit_generator(bank_statement_path):
         }
     }
     
-    return json.dumps(deposit)
+
+    json_object = json.dumps(deposit, cls=NpEncoder)
+        
+    with open('data.txt', 'w') as outfile:
+        outfile.write(json_object)

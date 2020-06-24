@@ -38,5 +38,6 @@ from generator import deposit_generator
 bank_statement_path = "path/to/csv/bank/statement"
 deposit_generator(bank_statement_path)
 ```
+This will add a new file in your present working directory with the name 'data.txt'. This text file contains the JSON object
 
 PS. This is currently supported for SBI bank statement only
