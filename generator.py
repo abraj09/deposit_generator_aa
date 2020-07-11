@@ -21,11 +21,15 @@ def find_mode(narration):
     elif "ATM" in narration:
         return "ATM"
     elif "card" in narration:
-        return "CARD"
+        return "POS"
     elif "NEFT" in narration:
         return "NEFT"
     elif "RTGS" in narration:
         return "RTGS"
+    elif "ECS" in narration:
+        return "ECS"
+    elif "NACH" in narration:
+        return "NACH"
     elif "TRANSFER" in narration:
         return "FT"
     else:
